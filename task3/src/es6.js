@@ -1,33 +1,42 @@
 "use strict";
-// в данных задачах нужно использовать возможности es6
-// ко всем заданиям можно (а местами и нужно) дописать свои тесты в файле es6.spec.js
-// Можно менять параметры функций (например сделать им значения по умолчанию)
+function fioToName(fio) {
+const names = fio.split(' ');
+return `${names[1]} ${names[0]}`;
+}
 
-// Напишите функцию, которая принимает ФИО пользователя и возвращает
-// строку формата Имя Фамилия
-function fioToName(fio) {}
+function filterUnique(array) {
+return Array.from(new Set(array));
+}
 
-// преобразуйте массив чисел так, чтобы в нем остались только
-// уникальные элементы
-// присмотритесь к коллекции "Set"
-function filterUnique(array) {}
+function calculateSalaryDifference(array) {
+const minSalary = Math.min(...array);
+const maxSalary = Math.max(...array);
+return maxSalary / minSalary;
+}
 
-// Задача: разница зарплат
-// в функцию приходит массив из n зарплат сотрудников фирмы
-// ваша задача определить, во сколько раз зарплата самого высокооплачиваемого
-// сотрудника превышает зарплату самого низкооплачиваемого
-function calculateSalaryDifference(array) {}
+class Dictionary {
+constructor() {
+this.words = new Map();
+}
 
-// Реализуйте класс "словарь слов" (как толковый словарь)
-// класс должен быть безопасным и работать только со словами
-// присмотритесь к коллекции "Map"
-// Словарь - (string, string), и все это не null и не undefined
-// * покройте класс тестами
-class Dictionary {}
+addWord(word, definition) {
+if (typeof word === 'string' && typeof definition === 'string') {
+this.words.set(word, definition);
+}
+}
+
+getWord(word) {
+return this.words.get(word);
+}
+
+getAllWords() {
+return Array.from(this.words.keys());
+}
+}
 
 module.exports = {
-    fioToName,
-    filterUnique,
-    Dictionary,
-    calculateSalaryDifference
+fioToName,
+filterUnique,
+Dictionary,
+calculateSalaryDifference
 };
